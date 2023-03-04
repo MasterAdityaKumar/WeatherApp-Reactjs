@@ -32,6 +32,7 @@ Demo
 Check out a live demo of the app here.
 
 
+![weather website ](https://user-images.githubusercontent.com/108165308/222922724-89003e3f-2f80-4a1a-9a9a-b74fba6460b0.png)
 
 
 
