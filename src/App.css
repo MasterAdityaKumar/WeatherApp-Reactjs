@@ -139,7 +139,7 @@ h1 {
   width: 60%;
   height: 100%;
   float: left;
-  background: url("C:\Old PC\React Project\WeatherApp\weatherapp\src\images\city.jpg");
+  background: url("../src/images/city.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   /* -webkit-background-size: cover; */
