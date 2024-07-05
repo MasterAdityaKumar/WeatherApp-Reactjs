@@ -2,8 +2,9 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import apiKey from "../apiKey";
 import ReactAnimatedWeather from "react-animated-weather";
+import PropTypes from "prop-types";
 
-function Forcast(props) {
+function Forecast(props) {
   const [query, setQuery] = useState("");
   const [error, setError] = useState("");
   const [weather, setWeather] = useState({});
@@ -11,18 +12,16 @@ function Forcast(props) {
   const search = useCallback((city) => {
     axios
       .get(
-        `${apiKey.base}weather?q=${
-          city !== "[object Object]" ? city : query
-        }&units=metric&APPID=${apiKey.key}`
+        `${apiKey.base}weather?q=${city}&units=metric&APPID=${apiKey.key}`
       )
       .then((response) => {
         setWeather(response.data);
         setQuery("");
+        setError("");
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
-        setWeather("");
-        setQuery("");
+        setWeather({});
         setError({ message: "Not Found", query: query });
       });
   }, [query]);
@@ -34,8 +33,15 @@ function Forcast(props) {
   };
 
   useEffect(() => {
-    search("Delhi");
-  }, [search]);
+    if (query.trim() !== "") {
+      search(query);
+    }
+  }, [query, search]);
+
+  const handleSearch = () => {
+    search(query);
+    // setTimeout(() => setQuery(""), 1000); // Clear after 1 second
+  };
 
   return (
     <div className="forecast">
@@ -54,23 +60,23 @@ function Forcast(props) {
             type="text"
             className="search-bar"
             placeholder="Search any city"
-            onChange={(e) => setQuery(e.target.value)}
             value={query}
+            onChange={(e) => setQuery(e.target.value)}
           />
           <div className="img-box">
             <img
               src="https://images.avishkaar.cc/workflow/newhp/search-white.png"
-              onClick={() => search(query)}
+              onClick={handleSearch}
               alt="Search"
             />
           </div>
         </div>
         <ul>
-          {typeof weather.main !== "undefined" ? (
+          {weather.main ? (
             <div>
               <li className="cityHead">
                 <p>
-                  {weather.name}, {weather.sys.country}
+                  {weather.name}, {weather.sys && weather.sys.country}
                 </p>
                 <img
                   className="temp"
@@ -114,4 +120,10 @@ function Forcast(props) {
   );
 }
 
-export default Forcast;
+// PropTypes validation
+Forecast.propTypes = {
+  icon: PropTypes.string.isRequired,
+  weather: PropTypes.string.isRequired,
+};
+
+export default Forecast;

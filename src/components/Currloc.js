@@ -5,23 +5,23 @@ import Forcast from "./Forcast";
 import loader from "../images/WeatherIcons.gif";
 import ReactAnimatedWeather from 'react-animated-weather';
 
-const dateBuilder = (d) => {
-    let months = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December",
-    ];
-    let days = [
-        "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
-        "Friday", "Saturday",
-    ];
+// const dateBuilder = (d) => {
+//     let months = [
+//         "January", "February", "March", "April", "May", "June",
+//         "July", "August", "September", "October", "November", "December",
+//     ];
+//     let days = [
+//         "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
+//         "Friday", "Saturday",
+//     ];
 
-    let day = days[d.getDay()];
-    let date = d.getDate();
-    let month = months[d.getMonth()];
-    let year = d.getFullYear();
+//     let day = days[d.getDay()];
+//     let date = d.getDate();
+//     let month = months[d.getMonth()];
+//     let year = d.getFullYear();
 
-    return `${day}, ${date} ${month} ${year}`;
-};
+//     return `${day}, ${date} ${month} ${year}`;
+// };
 
 const defaults = {
     icon: 'CLEAR_DAY',
@@ -153,9 +153,11 @@ const Weather = () => {
                             <p>
                                 {temperatureC}°<span>C</span>
                             </p>
-                            {/* <span className="slash">/</span>
-                            {temperatureF} &deg;F */}
+                            <span className="slash">/</span>
+                            {temperatureF} &deg;F
                         </div>
+                        {/* <p>Humidity: {humidity}%</p>  
+                        <p>Description: {description}</p> */}
                     </div>
                 </div>
                 <Forcast icon={icon} weather={main} />
