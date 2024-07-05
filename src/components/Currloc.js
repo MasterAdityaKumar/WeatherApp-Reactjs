@@ -35,10 +35,13 @@ const Weather = () => {
     const [lon, setLon] = useState(undefined);
     
     const [temperatureC, setTemperatureC] = useState(undefined);
+     // eslint-disable-next-line
     const [temperatureF, setTemperatureF] = useState(undefined);
     const [city, setCity] = useState(undefined);
     const [country, setCountry] = useState(undefined);
+     // eslint-disable-next-line
     const [humidity, setHumidity] = useState(undefined);
+     // eslint-disable-next-line
     const [description, setDescription] = useState(undefined);
     const [icon, setIcon] = useState("CLEAR_DAY");
     const [main, setMain] = useState('');
@@ -153,8 +156,8 @@ const Weather = () => {
                             <p>
                                 {temperatureC}°<span>C</span>
                             </p>
-                            <span className="slash">/</span>
-                            {temperatureF} &deg;F
+                            {/* <span className="slash">/</span>
+                            {temperatureF} &deg;F */}
                         </div>
                         {/* <p>Humidity: {humidity}%</p>  
                         <p>Description: {description}</p> */}
