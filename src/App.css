@@ -98,7 +98,7 @@ img {
 /*-- Index-Page-Styling --*/
 
 body {
-  background: url("C:\Old PC\React Project\WeatherApp\weatherapp\src\images\background.jpg");
+  background: url("../src/images/background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
